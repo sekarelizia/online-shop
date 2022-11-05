@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\LoginController;
+use App\Http\Middleware\Authenticate;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +48,7 @@ Route::delete('/admin/categories/{id}', [CategoryController::class, 'delete'])->
 Route::get('/admin/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 
 Route::put('/admin/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
